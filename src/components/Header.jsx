@@ -8,10 +8,9 @@ const Header = () => {
     <div className={styles.header}>
         <ToastContainer />
         <h3>Taskify - Stay organized through task creation</h3>
-        <ul>
+        {/* <ul>
             <li><Link to={'/'}>Events</Link></li>
-            {/* <li><Link to={'/time'}>Set Date</Link></li> */}
-        </ul>
+        </ul> */}
     </div>
     )
 }
