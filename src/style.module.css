@@ -26,7 +26,7 @@ body::before {
     padding-inline: 15em;
 }
 .header {
-    background: linear-gradient(90deg, #FDBB2D 0%, #3A1C71 100%);
+    background: linear-gradient(90deg, #F80 0%, #00A 100%);
     color: #fff;
     padding-block: auto;
     padding-inline: 50px;
@@ -55,7 +55,7 @@ body::before {
     border-bottom: 2px solid transparent;
 }
 .header ul li a:hover {
-    border-bottom: 2px solid #FDBB2D;
+    border-bottom: 2px solid #F80;
 }
 
 @media screen and (max-width: 884px) {
@@ -97,7 +97,7 @@ body::before {
 .todobutton {
     width: 100%;
     border: none;
-    background: linear-gradient(90deg, #FDBB2D 0%, #3A1C71 100%);
+    background: linear-gradient(90deg, #F80 0%, #00A 100%);
     color: bisque;
     height: 50px;
     cursor: pointer;
@@ -122,7 +122,7 @@ body::before {
     margin-left: 2em;
 }
 .btnDone {
-    background: linear-gradient(90deg, #FDBB2D 0%, #3A1C71 100%);
+    background: linear-gradient(90deg, #F80 0%, #00A 100%);
     padding: 10px 25px;
     margin-right: 2em;
     border-radius: 50px;
@@ -132,7 +132,7 @@ body::before {
     transition: all .5s linear;
 }
 .btnDone:hover, .time .eventBtn:hover, .todobutton:hover {
-    background: linear-gradient(90deg, #3A1C71 0%, #FDBB2D 100%);
+    background: linear-gradient(90deg, #00A 0%, #F80 100%);
     cursor: pointer;
 }
 
@@ -172,7 +172,7 @@ body::before {
     width: 94% !important;
     height: 25px;
     padding-inline: 10px;
-    border: 2px solid #3A1C71;
+    border: 2px solid #00A;
     border-radius: 4px;
 }
 .eventName p, .eventDescription p, .start, .end {
@@ -182,7 +182,7 @@ body::before {
 }
 .eventDescription textarea {
     padding-inline: 10px;
-    border: 2px solid #3A1C71;
+    border: 2px solid #00A;
     border-radius: 4px;
 }
 .time .eventBtn {
@@ -192,7 +192,7 @@ body::before {
     border: none;
     border-radius: 4px;
     font-size: 17px;
-    background: linear-gradient(90deg, #FDBB2D 0%, #3A1C71 100%);
+    background: linear-gradient(90deg, #F80 0%, #00A 100%);
     color: #fff;
     transition: all .2s ease-in-out;
 }
@@ -211,7 +211,7 @@ p {
     left: -25px;
     list-style-type: none;
     padding: 0;
-    border: 2px solid #3A1C71;
+    border: 2px solid #00A;
     border-radius: 10px;
     width: 110px;
     z-index: 1;
