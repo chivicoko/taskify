@@ -8,7 +8,7 @@ const Form = () => {
   const { handleChange, handleSubmit, task } = useGlobContext();
   const [selectedCategory, setSelectedCategory] = useState('');
   const [newTaskCategory, setNewTaskCategory] = useState('');
-  const categories = ['Family', 'Work', 'Personal']; // Your category options
+  const categories = ['Family', 'Work', 'Personal'];
 
   const handleCategorySelect = (category) => {
     setSelectedCategory(category);

@@ -34,29 +34,26 @@ const AppProvider = ({children}) => {
     //     setTask('');
     // }
     
-    // Update your handleAddTask function to include the category
-const handleAddTask = (name, category) => {
-    // Other logic for adding a task
-    setTaskList([...taskList, { id: crypto.randomUUID(), name, category, canceled: false }]);
-    // Other logic
-  };
-  
-  // In your context or where you handle the form submission
-  const handleSubmit = (e, category) => {
-    e.preventDefault();
-  
-    if (task.trim().length !== 0 && task.trim().length !== 1 && task.trim().length !== 2) {
-      // Instead of directly adding the task, use the handleAddTask function
-      handleAddTask(task, category);
-      toast(`Success! "${task}" has been added to the list`);
-    } else {
-      toast(`Invalid input. ("${task}" is too short)`);
-    }
-  
-    setTask('');
-    setEditIndex(null);
-  };
-  
+    const handleAddTask = (name, category) => {
+        // Other logic for adding a task
+        setTaskList([...taskList, { id: crypto.randomUUID(), name, category, canceled: false }]);
+        // Other logic
+    };
+    
+    const handleSubmit = (e, category) => {
+        e.preventDefault();
+    
+        if (task.trim().length !== 0 && task.trim().length !== 1 && task.trim().length !== 2) {
+            handleAddTask(task, category);
+            toast(`Success! "${task}" has been added to the list`);
+        } else {
+            toast(`Invalid input. ("${task}" is too short)`);
+        }
+    
+        setTask('');
+        setEditIndex(null);
+    };
+    
 
     const handleEdit = (index) => {
         setEditIndex(index);

@@ -1,5 +1,5 @@
 // Items.js
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit, faTrashCan } from '@fortawesome/free-solid-svg-icons';
 import { faCancel } from '@fortawesome/free-solid-svg-icons';
@@ -7,62 +7,81 @@ import { faEllipsis } from '@fortawesome/free-solid-svg-icons';
 
 import styles from '../style.module.css';
 import { useGlobContext } from '../context';
-
 const Items = () => {
-  const inputRef = useRef(null);
-  const {
-    handleDone,
-    openIndex,
-    handleOpen,
-    handleCancelItem,
-    getCancelLabel,
-    crosstask,
-    taskList,
-    display1,
-    pad,
-    handleEdit,
-    handleSaveEdit,
-    editIndex,
-    setEditIndex,
-    editName,
-    setEditName,
-    handleKeyDown,
-    isDropdownOpen,
-    setIsDropdownOpen,
-    handleCheckboxChange
-  } = useGlobContext();
-
-  useEffect(() => {
-    if (editIndex !== null && inputRef.current) {
-      inputRef.current.focus?.();
-    }
-  }, [editIndex]);
-
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (!event.target.closest(`.${styles.dropdown}`)) {
-        setIsDropdownOpen(false);
+    const [selectedCategory, setSelectedCategory] = useState(null);
+    const inputRef = useRef(null);
+  
+    const {
+      handleDone,
+      openIndex,
+      handleOpen,
+      handleCancelItem,
+      getCancelLabel,
+      crosstask,
+      taskList,
+      display1,
+      pad,
+      handleEdit,
+      handleSaveEdit,
+      editIndex,
+      setEditIndex,
+      editName,
+      setEditName,
+      handleKeyDown,
+      isDropdownOpen,
+      setIsDropdownOpen,
+      handleCheckboxChange
+    } = useGlobContext();
+  
+    useEffect(() => {
+      if (editIndex !== null && inputRef.current) {
+        inputRef.current.focus?.();
       }
+    }, [editIndex]);
+  
+    useEffect(() => {
+      const handleClickOutside = (event) => {
+        if (!event.target.closest(`.${styles.dropdown}`)) {
+          setIsDropdownOpen(false);
+        }
+      };
+  
+      const handleEscapeKeyPress = (event) => {
+        if (event.key === 'Escape') {
+          setIsDropdownOpen(false);
+        }
+      };
+  
+      document.addEventListener('mousedown', handleClickOutside);
+      document.addEventListener('keydown', handleEscapeKeyPress);
+  
+      return () => {
+        document.removeEventListener('mousedown', handleClickOutside);
+        document.removeEventListener('keydown', handleEscapeKeyPress);
+      };
+    }, [openIndex, isDropdownOpen]);
+  
+    const handleCategoryFilter = (category) => {
+      setSelectedCategory(category);
     };
-
-    const handleEscapeKeyPress = (event) => {
-      if (event.key === 'Escape') {
-        setIsDropdownOpen(false);
-      }
+  
+    const clearCategoryFilter = () => {
+      setSelectedCategory(null);
     };
-
-    document.addEventListener('mousedown', handleClickOutside);
-    document.addEventListener('keydown', handleEscapeKeyPress);
-
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-      document.removeEventListener('keydown', handleEscapeKeyPress);
-    };
-  }, [openIndex, isDropdownOpen]);
-
+  
+    const filteredTasks = selectedCategory
+      ? taskList.filter((taskItem) => taskItem.category === selectedCategory)
+      : taskList;
+  
   return (
     <>
-      {taskList.map((taskItem, index) => (
+        <div className={styles.categoryBtns}>
+            <button className={styles.categoryBtn} onClick={() => clearCategoryFilter()}>All</button>
+            <button className={styles.categoryBtn} onClick={() => handleCategoryFilter('Family')}>Family</button>
+            <button className={styles.categoryBtn} onClick={() => handleCategoryFilter('Work')}>Work</button>
+            <button className={styles.categoryBtn} onClick={() => handleCategoryFilter('Personal')}>Personal</button>
+      </div>
+      {filteredTasks.map((taskItem, index) => (
         <div
           key={taskItem.id}
           className={`${styles.taskItemContainer} ${taskItem.canceled ? styles.canceled : ''}`}
