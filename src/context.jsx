@@ -11,6 +11,7 @@ const AppProvider = ({children}) => {
     const [editIndex, setEditIndex] = useState(null);
     const [editName, setEditName] = useState('');
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+    const [categories, setCategories] = useState(['Family', 'Work', 'Personal']);
 
     useEffect(() => {
         localStorage.setItem('lstaskList', JSON.stringify(taskList));
@@ -20,18 +21,42 @@ const AppProvider = ({children}) => {
         setTask(e.target.value);
     }
 
-    const handleSubmit = e => {
-        e.preventDefault();
+    // const handleSubmit = e => {
+    //     e.preventDefault();
 
-        if (task.trim().length !== 0 && task.trim().length !== 1 && task.trim().length !== 2) {
-            setTaskList([...taskList, {id:crypto.randomUUID(), name:task}]);
-            toast(`Success! "${task}" has been added to the list)`);
-        } else {
-            toast(`Invalid input. ("${task}" is too short)`);
-        }
+    //     if (task.trim().length !== 0 && task.trim().length !== 1 && task.trim().length !== 2) {
+    //         setTaskList([...taskList, {id:crypto.randomUUID(), name:task, category: '', canceled: false}]);
+    //         toast(`Success! "${task}" has been added to the list)`);
+    //     } else {
+    //         toast(`Invalid input. ("${task}" is too short)`);
+    //     }
 
-        setTask('');
+    //     setTask('');
+    // }
+    
+    // Update your handleAddTask function to include the category
+const handleAddTask = (name, category) => {
+    // Other logic for adding a task
+    setTaskList([...taskList, { id: crypto.randomUUID(), name, category, canceled: false }]);
+    // Other logic
+  };
+  
+  // In your context or where you handle the form submission
+  const handleSubmit = (e, category) => {
+    e.preventDefault();
+  
+    if (task.trim().length !== 0 && task.trim().length !== 1 && task.trim().length !== 2) {
+      // Instead of directly adding the task, use the handleAddTask function
+      handleAddTask(task, category);
+      toast(`Success! "${task}" has been added to the list`);
+    } else {
+      toast(`Invalid input. ("${task}" is too short)`);
     }
+  
+    setTask('');
+    setEditIndex(null);
+  };
+  
 
     const handleEdit = (index) => {
         setEditIndex(index);
@@ -95,7 +120,7 @@ const AppProvider = ({children}) => {
     };
 
 
-    return <AppContext.Provider value={{handleChange, getCancelLabel, openIndex, handleCancelItem, handleOpen, handleSubmit, handleDone, task, taskList, setTask, setTaskList, handleSaveEdit, handleEdit, setEditName, editName, setEditIndex, editIndex, handleKeyDown, isDropdownOpen, setIsDropdownOpen, handleCheckboxChange }}>
+    return <AppContext.Provider value={{handleChange, getCancelLabel, openIndex, handleCancelItem, handleOpen, handleSubmit, handleDone, task, taskList, setTask, setTaskList, handleSaveEdit, handleEdit, setEditName, editName, setEditIndex, editIndex, handleKeyDown, isDropdownOpen, setIsDropdownOpen, handleCheckboxChange, categories, setCategories }}>
         {children}
     </AppContext.Provider>
 }

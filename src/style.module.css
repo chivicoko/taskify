@@ -58,24 +58,6 @@ body::before {
     border-bottom: 2px solid #F80;
 }
 
-@media screen and (max-width: 884px) {
-    .container {
-        padding-inline: .5em;
-    }
-    .header {
-        padding-inline: 20px;
-        flex-direction: column;
-        justify-content: center;
-    }
-    .header h3 {
-        text-align: center;
-    }
-    .header ul {
-        gap: 20px;
-        text-align: center;
-    }
-}
-
 
 /* ----- */
 .taskform {
@@ -287,7 +269,32 @@ p {
     cursor: pointer;
 }
 
+@media screen and (max-width: 1189px) {
+    .container {
+        padding-inline: 3em;
+    }
+}
+
 @media screen and (max-width: 884px) {
+    .container {
+        padding-inline: 2em;
+    }
+    .header {
+        padding-inline: 20px;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .header h3 {
+        font-size: 1.5rem;
+        text-align: center;
+    }
+    .taskitem h3 {
+        margin-left: .8em;
+    }
+    .header ul {
+        gap: 20px;
+        text-align: center;
+    }
     .edit__container {
         border-radius: 20px;
         width: 100%;
@@ -314,3 +321,60 @@ p {
         border-radius: 40px;
     }
 }
+
+@media screen and (max-width: 659px) {
+    .container {
+        padding-inline: .5em;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .container {
+        padding-inline: .5em;
+    }
+    .header h3 {
+        font-size: 1rem;
+    }
+    .taskinput {
+        margin: 20px auto;
+        font-size: 1.1em;
+    }
+    .taskbutton {
+        height: 40px;
+        font-size: 1.1em;
+    }
+}
+
+/* Example CSS for the modal */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+  }
+  
+  .modal.open {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+  }
+  
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  li {
+    cursor: pointer;
+    margin-bottom: 10px;
+  }
+  
