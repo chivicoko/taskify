@@ -81,6 +81,10 @@ body::before {
 .taskform {
     width: 100%;
     margin: 20px auto;
+    margin-bottom: 5rem;
+}
+.taskform form {
+    margin-bottom: 5rem;
 }
 .taskinput {
     margin: 20px auto;
