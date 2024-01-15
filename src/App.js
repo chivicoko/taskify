@@ -8,7 +8,7 @@ function App() {
         <Router>
           <Header />
           <Routes>
-            <Route path="/" element={<Form/>} />
+            <Route path="/taskify" element={<Form/>} />
             {/* <Route path="/time" element={<Time/>} /> */}
           </Routes>
         </Router>
