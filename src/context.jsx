@@ -18,6 +18,7 @@ const AppProvider = ({children}) => {
     const [editIndex, setEditIndex] = useState(null);
     const [editName, setEditName] = useState('');
 
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
     useEffect(() => {
         localStorage.setItem('lstaskList', JSON.stringify(taskList));
@@ -46,12 +47,11 @@ const AppProvider = ({children}) => {
     };
     
     const handleSaveEdit = () => {
-        // Assuming 'editName' is the edited name from the input field
         const updatedTaskList = [...taskList];
         
         if (editName.trim().length !== 0 && editName.trim().length !== 1 && editName.trim().length !== 2) {
             updatedTaskList[editIndex] = { ...updatedTaskList[editIndex], name: editName };
-            toast(`Success! "${editName}" has been updated in the list`);
+            toast(`Success! This task has been updated to "${editName}"`);
         } else {
             toast(`Invalid input. ("${editName}" is too short)`);
         }
@@ -60,15 +60,23 @@ const AppProvider = ({children}) => {
         setEditIndex(null);
     };
 
+    const handleKeyDown = (event) => {
+        if (event.key === 'Enter') {
+            handleSaveEdit();
+        }
+    };
+
     const handleDone = index => {
         const updatedItems = [...taskList];
         updatedItems.splice(index, 1);
         setTaskList(updatedItems);
     }
-    
+
     const handleOpen = (index) => {
-        setOpenIndex((prevIndex) => (prevIndex === index ? null : index));
+        setOpenIndex((prevIndex) => (prevIndex === index && isDropdownOpen ? null : index));
+        setIsDropdownOpen(true);
     };
+    
 
     const handleCancelItem = (index) => {
         const updatedtaskList = [...taskList];
@@ -84,7 +92,7 @@ const AppProvider = ({children}) => {
     };
 
 
-    return <AppContext.Provider value={{handleChange, getCancelLabel, openIndex, handleCancelItem, handleOpen, handleSubmit, handleDone, task, taskList, setTask, setTaskList, handleSaveEdit, handleEdit, setEditName, editName, setEditIndex, editIndex }}>
+    return <AppContext.Provider value={{handleChange, getCancelLabel, openIndex, handleCancelItem, handleOpen, handleSubmit, handleDone, task, taskList, setTask, setTaskList, handleSaveEdit, handleEdit, setEditName, editName, setEditIndex, editIndex, handleKeyDown, isDropdownOpen, setIsDropdownOpen }}>
         {children}
     </AppContext.Provider>
 }
