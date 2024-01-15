@@ -6,42 +6,41 @@ const AppContext = React.createContext();
 
 const AppProvider = ({children}) => {
 
-    const [display2, setDisplay2] = useState('none');
     const [openIndex, setOpenIndex] = useState(null);
 
-    // todo section
-    const [todo, setTodo] = useState("");
-    const [todoList, setTodoList] = useState(JSON.parse(localStorage.getItem('lstodoList')) || []);
-    // const [todoList, setTodoList] = useState(() => {
-    //     const storedTodoList = JSON.parse(localStorage.getItem('lstodoList')) || [];
-    //     return storedTodoList;
+    // task section
+    const [task, setTask] = useState("");
+    const [taskList, setTaskList] = useState(JSON.parse(localStorage.getItem('lstaskList')) || []);
+    // const [taskList, setTaskList] = useState(() => {
+    //     const storedtaskList = JSON.parse(localStorage.getItem('lstaskList')) || [];
+    //     return storedtaskList;
     // });
 
     useEffect(() => {
-        localStorage.setItem('lstodoList', JSON.stringify(todoList));
-    }, [todoList]);
+        localStorage.setItem('lstaskList', JSON.stringify(taskList));
+    }, [taskList]);
 
     const handleChange = e => {
-        setTodo(e.target.value);
+        setTask(e.target.value);
     }
 
     const handleSubmit = e => {
         e.preventDefault();
 
-        if (todo.trim().length !== 0 && todo.trim().length !== 1 && todo.trim().length !== 2) {
-            setTodoList([...todoList, {id:crypto.randomUUID(), name:todo}]);
-            toast(`Success! "${todo}" has been added to the list)`);
+        if (task.trim().length !== 0 && task.trim().length !== 1 && task.trim().length !== 2) {
+            setTaskList([...taskList, {id:crypto.randomUUID(), name:task}]);
+            toast(`Success! "${task}" has been added to the list)`);
         } else {
-            toast(`Invalid input. ("${todo}" is too short)`);
+            toast(`Invalid input. ("${task}" is too short)`);
         }
 
-        setTodo('');
+        setTask('');
     }
 
     const handleDone = index => {
-        const updatedItems = [...todoList];
+        const updatedItems = [...taskList];
         updatedItems.splice(index, 1);
-        setTodoList(updatedItems);
+        setTaskList(updatedItems);
     }
     
     const handleOpen = (index) => {
@@ -49,20 +48,20 @@ const AppProvider = ({children}) => {
     };
 
     const handleCancelItem = (index) => {
-        const updatedTodoList = [...todoList];
-        updatedTodoList[index].canceled = !updatedTodoList[index].canceled;
+        const updatedtaskList = [...taskList];
+        updatedtaskList[index].canceled = !updatedtaskList[index].canceled;
 
-        localStorage.setItem('todoList', JSON.stringify(updatedTodoList));
+        localStorage.setItem('taskList', JSON.stringify(updatedtaskList));
 
-        setTodoList(updatedTodoList);
+        setTaskList(updatedtaskList);
     };
 
     const getCancelLabel = (index) => {
-        return todoList[index].canceled ? 'Restore' : 'Cancel';
+        return taskList[index].canceled ? 'Restore' : 'Cancel';
     };
 
 
-    return <AppContext.Provider value={{handleChange, getCancelLabel, openIndex, handleCancelItem, handleOpen, handleSubmit, handleDone, todo, todoList, setTodo, setTodoList, display2 }}>
+    return <AppContext.Provider value={{handleChange, getCancelLabel, openIndex, handleCancelItem, handleOpen, handleSubmit, handleDone, task, taskList, setTask, setTaskList }}>
         {children}
     </AppContext.Provider>
 }

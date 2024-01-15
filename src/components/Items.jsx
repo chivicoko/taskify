@@ -8,15 +8,15 @@ import { useGlobContext } from '../context';
 
 
 const Items = () => {
-    const { handleDone, openIndex, handleOpen, handleCancelItem, getCancelLabel, crossTodo, todoList, display1, pad, display2 } = useGlobContext();
+    const { handleDone, openIndex, handleOpen, handleCancelItem, getCancelLabel, crosstask, taskList, display1, pad } = useGlobContext();
 
 
     return (
         <>
-            {todoList.map((todoItem, index) => (
-                <div key={todoItem.id} className={`${styles.todoItemContainer} ${todoItem.canceled ? styles.canceled : ''}`} style={{ border: display1, paddingInline: pad }}>
-                    <div className={styles.todoitem}>
-                        <h3 className={`${crossTodo} ${todoItem.canceled ? styles.canceled : ''}`}>{todoItem.name}</h3>
+            {taskList.map((taskItem, index) => (
+                <div key={taskItem.id} className={`${styles.taskItemContainer} ${taskItem.canceled ? styles.canceled : ''}`} style={{ border: display1, paddingInline: pad }}>
+                    <div className={styles.taskitem}>
+                        <h3 className={`${crosstask} ${taskItem.canceled ? styles.canceled : ''}`}>{taskItem.name}</h3>
                         <div className={styles.dropdown}>
                             <button className={styles.btnDone} onClick={() => handleOpen(index)}><FontAwesomeIcon icon={faEllipsis} /></button>
 
