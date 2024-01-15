@@ -30,7 +30,8 @@ const Items = () => {
         setEditName,
         handleKeyDown,
         isDropdownOpen,
-        setIsDropdownOpen
+        setIsDropdownOpen,
+        handleCheckboxChange
     } = useGlobContext();
 
     useEffect(() => {
@@ -40,7 +41,7 @@ const Items = () => {
             inputRef.current.focus?.();
         }
     }, [editIndex]);
-    
+
     useEffect(() => {
         const handleClickOutside = (event) => {
             // Check if the click target is outside the dropdown button and menu
@@ -83,7 +84,10 @@ const Items = () => {
                         ) : (
                             // Render the task item
                             <>
-                                <h3 className={`${crosstask} ${taskItem.canceled ? styles.canceled : ''}`}>{taskItem.name}</h3>
+                                <h3 className={`${crosstask} ${taskItem.canceled ? styles.canceled : ''}`}>
+                                    <input type="checkbox" checked={taskItem.canceled} onChange={() => handleCheckboxChange(index)} />
+                                    {taskItem.name}
+                                </h3>
                                 <div className={styles.dropdown}>
                                     <button className={styles.btnDone} onClick={() => { setIsDropdownOpen(!isDropdownOpen); handleOpen(index); }}><FontAwesomeIcon icon={faEllipsis} /></button>
 

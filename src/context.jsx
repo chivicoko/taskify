@@ -5,19 +5,11 @@ import 'react-toastify/dist/ReactToastify.css';
 const AppContext = React.createContext();
 
 const AppProvider = ({children}) => {
-
     const [openIndex, setOpenIndex] = useState(null);
-
-    // task section
     const [task, setTask] = useState("");
     const [taskList, setTaskList] = useState(JSON.parse(localStorage.getItem('lstaskList')) || []);
-    // const [taskList, setTaskList] = useState(() => {
-    //     const storedtaskList = JSON.parse(localStorage.getItem('lstaskList')) || [];
-    //     return storedtaskList;
-    // });
     const [editIndex, setEditIndex] = useState(null);
     const [editName, setEditName] = useState('');
-
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
     useEffect(() => {
@@ -91,8 +83,19 @@ const AppProvider = ({children}) => {
         return taskList[index].canceled ? 'Restore' : 'Cancel';
     };
 
+    const handleCheckboxChange = (index) => {
+        setTaskList((prevTaskList) => {
+            const updatedTaskList = [...prevTaskList];
+            updatedTaskList[index] = {
+                ...updatedTaskList[index],
+                canceled: !updatedTaskList[index].canceled,
+            };
+            return updatedTaskList;
+        });
+    };
 
-    return <AppContext.Provider value={{handleChange, getCancelLabel, openIndex, handleCancelItem, handleOpen, handleSubmit, handleDone, task, taskList, setTask, setTaskList, handleSaveEdit, handleEdit, setEditName, editName, setEditIndex, editIndex, handleKeyDown, isDropdownOpen, setIsDropdownOpen }}>
+
+    return <AppContext.Provider value={{handleChange, getCancelLabel, openIndex, handleCancelItem, handleOpen, handleSubmit, handleDone, task, taskList, setTask, setTaskList, handleSaveEdit, handleEdit, setEditName, editName, setEditIndex, editIndex, handleKeyDown, isDropdownOpen, setIsDropdownOpen, handleCheckboxChange }}>
         {children}
     </AppContext.Provider>
 }
