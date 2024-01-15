@@ -254,3 +254,21 @@ p {
     text-decoration-style: double;
     text-decoration-color: red;
 }
+.edit__container {
+    border-radius: 20px;
+    
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 50px;
+    margin: 5px auto;
+}
+.edit__container input {
+    margin: 5px auto;
+    margin-left: 1em;
+    border: 1px solid #666;
+    border-radius: 50px;
+    padding: .5rem 1.5rem;
+    font-size: large;
+}

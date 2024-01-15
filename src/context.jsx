@@ -15,6 +15,9 @@ const AppProvider = ({children}) => {
     //     const storedtaskList = JSON.parse(localStorage.getItem('lstaskList')) || [];
     //     return storedtaskList;
     // });
+    const [editIndex, setEditIndex] = useState(null);
+    const [editName, setEditName] = useState('');
+
 
     useEffect(() => {
         localStorage.setItem('lstaskList', JSON.stringify(taskList));
@@ -36,6 +39,26 @@ const AppProvider = ({children}) => {
 
         setTask('');
     }
+
+    const handleEdit = (index) => {
+        setEditIndex(index);
+        setEditName(taskList[index].name);
+    };
+    
+    const handleSaveEdit = () => {
+        // Assuming 'editName' is the edited name from the input field
+        const updatedTaskList = [...taskList];
+        
+        if (editName.trim().length !== 0 && editName.trim().length !== 1 && editName.trim().length !== 2) {
+            updatedTaskList[editIndex] = { ...updatedTaskList[editIndex], name: editName };
+            toast(`Success! "${editName}" has been updated in the list`);
+        } else {
+            toast(`Invalid input. ("${editName}" is too short)`);
+        }
+    
+        setTaskList(updatedTaskList);
+        setEditIndex(null);
+    };
 
     const handleDone = index => {
         const updatedItems = [...taskList];
@@ -61,7 +84,7 @@ const AppProvider = ({children}) => {
     };
 
 
-    return <AppContext.Provider value={{handleChange, getCancelLabel, openIndex, handleCancelItem, handleOpen, handleSubmit, handleDone, task, taskList, setTask, setTaskList }}>
+    return <AppContext.Provider value={{handleChange, getCancelLabel, openIndex, handleCancelItem, handleOpen, handleSubmit, handleDone, task, taskList, setTask, setTaskList, handleSaveEdit, handleEdit, setEditName, editName, setEditIndex, editIndex }}>
         {children}
     </AppContext.Provider>
 }
