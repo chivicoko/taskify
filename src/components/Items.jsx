@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTrashCan } from '@fortawesome/free-solid-svg-icons'
+import { faEdit, faTrashCan } from '@fortawesome/free-solid-svg-icons'
 import { faCancel } from '@fortawesome/free-solid-svg-icons'
 import { faEllipsis } from '@fortawesome/free-solid-svg-icons'
 
@@ -27,6 +27,9 @@ const Items = () => {
                                     </li>
                                     <li id={styles.last_item} className={styles.menu_item}>
                                         <button onClick={() => handleDone(index)}><FontAwesomeIcon icon={faTrashCan} /> Delete</button>
+                                    </li>
+                                    <li id={styles.last_item} className={styles.menu_item}>
+                                        <button onClick={() => handleDone(index)}><FontAwesomeIcon icon={faEdit} /> Edit</button>
                                     </li>
                                 </ul>
                             )}
