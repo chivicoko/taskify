@@ -7,7 +7,7 @@ const Header = () => {
     return (
     <div className={styles.header}>
         <ToastContainer />
-        <h3><span className={styles.title}>Taskify</span> - <span className={styles.writeup}>Stay organized through task creation</span></h3>
+        <h3><span className={styles.title}>Taskify</span> <span className={styles.writeup}> <span className={styles.dash}>-</span> Stay organized through task creation</span></h3>
         {/* <ul>
             <li><Link to={'/'}>Events</Link></li>
         </ul> */}

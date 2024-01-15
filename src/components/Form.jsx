@@ -19,25 +19,13 @@ const Form = () => {
     <div className={styles.taskform}>
       <div className={styles.container} id="parentDiv">
         <form onSubmit={(e) => handleSubmit(e, newTaskCategory)}>
-          <input
-            className={styles.taskinput}
-            value={task}
-            onChange={handleChange}
-            type="text"
-            placeholder="Write a task here"
-          />
+          <input className={styles.taskinput} value={task} onChange={handleChange} type="text" placeholder="Enter a task here" />
           <label>
-            Category:
-            <select
-              className={styles.categoryDropdown}
-              value={newTaskCategory}
-              onChange={(e) => setNewTaskCategory(e.target.value)}
-            >
+            <span>Category:</span>
+            <select className={styles.categoryDropdown} value={newTaskCategory} onChange={(e) => setNewTaskCategory(e.target.value)}>
               <option value="" disabled>Select a category</option>
               {categories.map((category) => (
-                <option key={category} value={category}>
-                  {category}
-                </option>
+                <option key={category} value={category}> {category} </option>
               ))}
             </select>
           </label>

@@ -107,7 +107,11 @@ const Items = () => {
                     />
                     <span className={styles.checkboxLabel}>{taskItem.name}</span>
                   </label>
-                  {taskItem.category && <span className={styles.categoryLabel}>({taskItem.category})</span>}
+                  {taskItem.category ? (
+                    <span className={styles.categoryLabel}>({taskItem.category})</span>
+                  ) : (
+                    <span className={styles.uncategorizedLabel}>(Uncategorized)</span>
+                  )}
                 </h3>
                 <div className={styles.dropdown}>
                   <button
