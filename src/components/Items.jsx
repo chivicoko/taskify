@@ -108,9 +108,9 @@ const Items = () => {
                     <span className={styles.checkboxLabel}>{taskItem.name}</span>
                   </label>
                   {taskItem.category ? (
-                    <span className={styles.categoryLabel}>({taskItem.category})</span>
+                    <span className={styles.categoryLabel}> ({taskItem.category})</span>
                   ) : (
-                    <span className={styles.uncategorizedLabel}>(Uncategorized)</span>
+                    <span className={styles.uncategorizedLabel}><em> (Uncategorized)</em></span>
                   )}
                 </h3>
                 <div className={styles.dropdown}>
@@ -126,7 +126,7 @@ const Items = () => {
 
                   {openIndex === index && isDropdownOpen && (
                     <ul className={`${styles.menu} ${styles.dropdownMenu}`}>
-                      <li className={styles.menu_item}>
+                      <li className={styles.menu_item} id={styles.first_item}>
                         <button onClick={() => handleCancelItem(index)}>
                           <FontAwesomeIcon icon={faCancel} /> {getCancelLabel(index)}
                         </button>
@@ -136,7 +136,7 @@ const Items = () => {
                           <FontAwesomeIcon icon={faTrashCan} /> Delete
                         </button>
                       </li>
-                      <li className={styles.menu_item}>
+                      <li className={styles.menu_item} id={styles.last_item}>
                         <button onClick={() => handleEdit(index)}>
                           <FontAwesomeIcon icon={faEdit} /> Edit
                         </button>

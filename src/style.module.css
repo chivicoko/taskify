@@ -9,7 +9,6 @@ body {
     min-height: 100vh;
     position: relative;
 }
-
 body::before {
     content: "";
     width: 100%;
@@ -22,7 +21,6 @@ body::before {
     left: 0;
     z-index: -1;
 }
-
 .container {
     padding-inline: 15em;
 }
@@ -68,7 +66,6 @@ body::before {
 .header ul li a:hover {
     border-bottom: 2px solid #F80;
 }
-
 
 /* ----- */
 .taskform {
@@ -133,7 +130,6 @@ body::before {
     cursor: pointer;
 }
 
-
 /* ---- */
 .timearea {
     padding: 20px;
@@ -197,7 +193,6 @@ p {
     margin-top: 10px;
 }
 
-
 /* ----- */
 .dropdown {
     position: relative;
@@ -208,7 +203,7 @@ p {
     left: -25px;
     list-style-type: none;
     padding: 0;
-    border: 2px solid #00A;
+    border: 2px solid #F80;
     border-radius: 10px;
     width: 110px;
     z-index: 1;
@@ -222,12 +217,12 @@ p {
     background-color: #b9b2a5;
 }
 .menu #first_item {
-    border-top-right-radius: 8px;
-    border-top-left-radius: 8px;
+    border-top-right-radius: 8.3px;
+    border-top-left-radius: 8.3px;
 }
 .menu #last_item {
-    border-bottom-right-radius: 8px;
-    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8.3px;
+    border-bottom-left-radius: 8.3px;
 }
 .menu > li > button {
     width: 100%;
@@ -247,6 +242,8 @@ p {
     text-decoration-style: double;
     text-decoration-color: red;
 }
+
+/* --- */
 .edit__container {
     border-radius: 20px;
     width: 100%;
@@ -280,6 +277,7 @@ p {
     cursor: pointer;
 }
 
+/* ---- */
 .categoryBtns {
     width: 100%;
     display: flex;
@@ -319,6 +317,10 @@ form label select {
     width: 15rem;
     border-radius: 1rem;
     border: 2px solid #F80;
+}
+.uncategorizedLabel {
+    color: red;
+    font-size: small;
 }
 
 @media screen and (max-width: 1189px) {
@@ -365,7 +367,6 @@ form label select {
         border-radius: 50px;
         padding: .5rem;
         font-size: small;
-        /* width: 60%; */
     }
     .editBtn {
         padding: 5px;
@@ -378,21 +379,20 @@ form label select {
     .container {
         padding-inline: .5em;
     }
-
-.header h3 {
-    flex-direction: column;
-}
-.header h3 .title {
-    font-size: 2rem;
-    color: #F80;
-}
-.header h3 .dash {
-    display: none;
-    margin-right: .5rem;
-}
-.header h3 .writeup {
-    font-size: 1.2rem;
-}
+    .header h3 {
+        flex-direction: column;
+    }
+    .header h3 .title {
+        font-size: 2rem;
+        color: #F80;
+    }
+    .header h3 .dash {
+        display: none;
+        margin-right: .5rem;
+    }
+    .header h3 .writeup {
+        font-size: 1.2rem;
+    }
 }
 
 @media screen and (max-width: 320px) {
