@@ -9,7 +9,6 @@ function App() {
           <Header />
           <Routes>
             <Route path="/taskify" element={<Form/>} />
-            {/* <Route path="/time" element={<Time/>} /> */}
           </Routes>
         </Router>
       </div>

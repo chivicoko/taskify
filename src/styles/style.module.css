@@ -12,7 +12,7 @@ body {
 body::before {
     content: "";
     width: 100%;
-    background: url(../public/texture2.jpg) center/cover fixed no-repeat;
+    background: url(../../public/texture2.jpg) center/cover fixed no-repeat;
     opacity: 0.5;
     position: absolute;
     top: 0;
@@ -278,7 +278,7 @@ p {
 }
 
 /* ---- */
-.categoryBtns {
+.categoryBtnContainer {
     width: 100%;
     display: flex;
     justify-content: center;

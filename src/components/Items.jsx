@@ -1,12 +1,11 @@
-// Items.js
 import React, { useRef, useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit, faTrashCan } from '@fortawesome/free-solid-svg-icons';
 import { faCancel } from '@fortawesome/free-solid-svg-icons';
 import { faEllipsis } from '@fortawesome/free-solid-svg-icons';
 
-import styles from '../style.module.css';
-import { useGlobContext } from '../context';
+import styles from '../styles/style.module.css';
+import { useGlobContext } from '../context/context';
 const Items = () => {
     const [selectedCategory, setSelectedCategory] = useState(null);
     const inputRef = useRef(null);
@@ -75,7 +74,7 @@ const Items = () => {
   
   return (
     <>
-        <div className={styles.categoryBtns}>
+        <div className={styles.categoryBtnContainer}>
             <button className={styles.categoryBtn} onClick={() => clearCategoryFilter()}>All</button>
             <button className={styles.categoryBtn} onClick={() => handleCategoryFilter('Family')}>Family</button>
             <button className={styles.categoryBtn} onClick={() => handleCategoryFilter('Work')}>Work</button>

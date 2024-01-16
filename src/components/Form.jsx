@@ -1,7 +1,6 @@
-// Form.js
 import React, { useState } from 'react';
-import styles from '../style.module.css';
-import { useGlobContext } from '../context';
+import styles from '../styles/style.module.css';
+import { useGlobContext } from '../context/context';
 import Items from './Items';
 
 const Form = () => {
