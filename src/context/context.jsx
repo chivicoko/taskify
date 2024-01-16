@@ -1,3 +1,4 @@
+
 import React, {useContext, useEffect, useState} from "react";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -20,24 +21,9 @@ const AppProvider = ({children}) => {
     const handleChange = e => {
         setTask(e.target.value);
     }
-
-    // const handleSubmit = e => {
-    //     e.preventDefault();
-
-    //     if (task.trim().length !== 0 && task.trim().length !== 1 && task.trim().length !== 2) {
-    //         setTaskList([...taskList, {id:crypto.randomUUID(), name:task, category: '', canceled: false}]);
-    //         toast(`Success! "${task}" has been added to the list)`);
-    //     } else {
-    //         toast(`Invalid input. ("${task}" is too short)`);
-    //     }
-
-    //     setTask('');
-    // }
     
     const handleAddTask = (name, category) => {
-        // Other logic for adding a task
         setTaskList([...taskList, { id: crypto.randomUUID(), name, category, canceled: false }]);
-        // Other logic
     };
     
     const handleSubmit = (e, category) => {
@@ -127,3 +113,4 @@ export const useGlobContext = () => {
 }
 
 export {AppContext, AppProvider};
+
