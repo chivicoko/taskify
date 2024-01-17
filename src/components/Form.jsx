@@ -2,11 +2,21 @@
 import React, { useState } from 'react';
 import styles from '../styles/style.module.css';
 import Items from './Items';
-import TaskCategories from './TaskCategories';
-import { useFormContext } from '../context/formContext';
+// import TaskCategories from './TaskCategories';
+import { useGlobContext } from '../context/context';
+// import { useFormContext } from '../context/formContext';
 
 const Form = () => {
-  const { handleChange, handleSubmit, task, handleCategorySelect, selectedCategory, newTaskCategory, setNewTaskCategory } = useFormContext();
+  const { handleChange, handleSubmit, task } = useGlobContext();
+
+  const [categories, setCategories] = useState(['Family', 'Work', 'Personal']);
+  const [selectedCategory, setSelectedCategory] = useState('');
+  const [newTaskCategory, setNewTaskCategory] = useState('');
+
+  const handleCategorySelect = (category) => {
+    // setSelectedCategory(category);
+    setNewTaskCategory(category);
+  };
 
   return (
     <div className={styles.taskform}>
@@ -17,15 +27,18 @@ const Form = () => {
           <label>
             <span>Category:</span>
             <select className={styles.categoryDropdown} value={newTaskCategory} onChange={(e) => setNewTaskCategory(e.target.value)}>
-                <option value="" disabled>Select a category</option>
-                <TaskCategories />
+              <option value="" disabled>Select a category</option>
+              {/* <TaskCategories /> */}
+              {categories.map((category) => (
+                <option key={category} value={category}>
+                  {category}
+                </option>
+              ))}
             </select>
-        </label>
-          <button className={styles.taskbutton} type="submit">
-            Add
-          </button>
+          </label>
+
+          <button className={styles.taskbutton} type="submit"> Add </button>
         </form>
-        {selectedCategory && <p>Selected Category: {selectedCategory}</p>}
         <Items />
       </div>
     </div>

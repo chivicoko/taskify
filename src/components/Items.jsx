@@ -59,7 +59,7 @@ const Items = () => {
         document.removeEventListener('mousedown', handleClickOutside);
         document.removeEventListener('keydown', handleEscapeKeyPress);
       };
-    }, [openIndex, isDropdownOpen]);
+    }, [openIndex, isDropdownOpen, setIsDropdownOpen]);
   
     const handleCategoryFilter = (category) => {
       setSelectedCategory(category);
@@ -72,6 +72,7 @@ const Items = () => {
     const filteredTasks = selectedCategory
       ? taskList.filter((taskItem) => taskItem.category === selectedCategory)
       : taskList;
+
   
   return (
     <>

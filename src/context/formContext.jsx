@@ -28,6 +28,7 @@ const AppProvider = ({children}) => {
     const handleSubmit = (e, category) => {
         e.preventDefault();
     
+        // if (task.trim().length >= 2) {
         if (task.trim().length !== 0 && task.trim().length !== 1 && task.trim().length !== 2) {
             handleAddTask(task, category);
             toast(`Success! "${task}" has been added to the list`);
@@ -44,15 +45,14 @@ const AppProvider = ({children}) => {
         setNewTaskCategory(category);
     };
 
-
-    return <AppContext.Provider value={{ handleChange, handleSubmit, task, handleCategorySelect, categories, setCategories, selectedCategory, newTaskCategory, setNewTaskCategory }}>
+    return <AppContext.Provider value={{ handleChange, handleSubmit, task, editIndex, setEditIndex, handleCategorySelect, categories, setCategories, selectedCategory, newTaskCategory, setNewTaskCategory }}>
         {children}
     </AppContext.Provider>
 }
 
-export const useFormContext = () => {
+const useFormContext = () => {
     return useContext(AppContext);
 }
 
-export {AppContext, AppProvider};
+export {AppContext, AppProvider, useFormContext};
 

@@ -7,7 +7,9 @@ const TaskCategories = () => {
   return (
     <>
         {categories.map((category) => (
-          <option key={category} value={category}> {category} </option>
+          <option key={category} value={category}>
+            {category}
+          </option>
         ))}
     </>
   )

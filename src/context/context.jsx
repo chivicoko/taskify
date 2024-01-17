@@ -12,7 +12,6 @@ const AppProvider = ({children}) => {
     const [editIndex, setEditIndex] = useState(null);
     const [editName, setEditName] = useState('');
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-    const [categories, setCategories] = useState(['Family', 'Work', 'Personal']);
 
     useEffect(() => {
         localStorage.setItem('lstaskList', JSON.stringify(taskList));
@@ -24,6 +23,7 @@ const AppProvider = ({children}) => {
     
     const handleAddTask = (name, category) => {
         setTaskList([...taskList, { id: crypto.randomUUID(), name, category, canceled: false }]);
+        // setTaskList([...taskList].reverse());
     };
     
     const handleSubmit = (e, category) => {
@@ -93,17 +93,14 @@ const AppProvider = ({children}) => {
 
     const handleCheckboxChange = (index) => {
         setTaskList((prevTaskList) => {
-            const updatedTaskList = [...prevTaskList];
-            updatedTaskList[index] = {
-                ...updatedTaskList[index],
-                canceled: !updatedTaskList[index].canceled,
-            };
+                const updatedTaskList = [...prevTaskList];
+                updatedTaskList[index] = {...updatedTaskList[index], canceled: !updatedTaskList[index].canceled };
             return updatedTaskList;
         });
     };
 
 
-    return <AppContext.Provider value={{handleChange, getCancelLabel, openIndex, handleCancelItem, handleOpen, handleSubmit, handleDone, task, taskList, setTask, setTaskList, handleSaveEdit, handleEdit, setEditName, editName, setEditIndex, editIndex, handleKeyDown, isDropdownOpen, setIsDropdownOpen, handleCheckboxChange, categories, setCategories }}>
+    return <AppContext.Provider value={{handleChange, getCancelLabel, openIndex, handleCancelItem, handleOpen, handleSubmit, handleDone, task, taskList, setTask, setTaskList, handleSaveEdit, handleEdit, setEditName, editName, setEditIndex, editIndex, handleKeyDown, isDropdownOpen, setIsDropdownOpen, handleCheckboxChange }}>
         {children}
     </AppContext.Provider>
 }
