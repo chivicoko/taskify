@@ -131,69 +131,6 @@ body::before {
     cursor: pointer;
 }
 
-/* ---- */
-.timearea {
-    padding: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
-.timearea div {
-    text-align: center;
-    width: 100%;
-}
-.time {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: 455px !important;
-}
-.eventName, .eventDescription {
-    width: 100% !important;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-}
-.eventName, .end {
-    margin-top: 60px;
-}
-.eventDescription, #create, #signOut {
-    margin-top: 25px;
-}
-.eventName input {
-    width: 94% !important;
-    height: 25px;
-    padding-inline: 10px;
-    border: 2px solid #00A;
-    border-radius: 4px;
-}
-.eventName p, .eventDescription p, .start, .end {
-    font-size: large !important;
-    font-weight: 700 !important;
-    line-height: 1px;
-}
-.eventDescription textarea {
-    padding-inline: 10px;
-    border: 2px solid #00A;
-    border-radius: 4px;
-}
-.time .eventBtn {
-    height: 35px;
-    width: 98.5% !important;
-    margin-left: 4px;
-    border: none;
-    border-radius: 4px;
-    font-size: 17px;
-    background: linear-gradient(90deg, #F80 0%, #00A 100%);
-    color: #fff;
-    transition: all .2s ease-in-out;
-}
-p {
-    margin-top: 10px;
-}
-
 /* ----- */
 .dropdown {
     position: relative;
