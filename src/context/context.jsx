@@ -23,13 +23,12 @@ const AppProvider = ({children}) => {
     
     const handleAddTask = (name, category) => {
         setTaskList([...taskList, { id: crypto.randomUUID(), name, category, canceled: false }]);
-        // setTaskList([...taskList].reverse());
     };
     
     const handleSubmit = (e, category) => {
         e.preventDefault();
     
-        if (task.trim().length !== 0 && task.trim().length !== 1 && task.trim().length !== 2) {
+        if (task.trim().length >= 2) {
             handleAddTask(task, category);
             toast(`Success! "${task}" has been added to the list`);
         } else {
@@ -49,7 +48,7 @@ const AppProvider = ({children}) => {
     const handleSaveEdit = () => {
         const updatedTaskList = [...taskList];
         
-        if (editName.trim().length !== 0 && editName.trim().length !== 1 && editName.trim().length !== 2) {
+        if (editName.trim().length >= 2) {
             updatedTaskList[editIndex] = { ...updatedTaskList[editIndex], name: editName };
             toast(`Success! This task has been updated to "${editName}"`);
         } else {

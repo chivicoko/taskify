@@ -68,7 +68,6 @@ const Items = () => {
     const clearCategoryFilter = () => {
       setSelectedCategory(null);
     };
-  
     const filteredTasks = selectedCategory
       ? taskList.filter((taskItem) => taskItem.category === selectedCategory)
       : taskList;
@@ -76,13 +75,20 @@ const Items = () => {
   
   return (
     <>
+      { taskList.length === 0
+        ?
         <div className={styles.categoryBtnContainer}>
-            <button className={styles.categoryBtn} onClick={() => clearCategoryFilter()}>All</button>
-            <button className={styles.categoryBtn} onClick={() => handleCategoryFilter('Family')}>Family</button>
-            <button className={styles.categoryBtn} onClick={() => handleCategoryFilter('Work')}>Work</button>
-            <button className={styles.categoryBtn} onClick={() => handleCategoryFilter('Personal')}>Personal</button>
-      </div>
-      {filteredTasks.map((taskItem, index) => (
+          <p><span>No tasks yet.</span> <br /> Enter your tasks in the input above</p>
+        </div>
+        :
+        <div className={styles.categoryBtnContainer}>
+          <button className={styles.categoryBtn} onClick={() => clearCategoryFilter()}>All</button>
+          <button className={styles.categoryBtn} onClick={() => handleCategoryFilter('Family')}>Family</button>
+          <button className={styles.categoryBtn} onClick={() => handleCategoryFilter('Work')}>Work</button>
+          <button className={styles.categoryBtn} onClick={() => handleCategoryFilter('Personal')}>Personal</button>
+        </div>
+      }
+      {filteredTasks.slice().reverse().map((taskItem, index) => (
         <div
           key={taskItem.id}
           className={`${styles.taskItemContainer} ${taskItem.canceled ? styles.canceled : ''}`}
