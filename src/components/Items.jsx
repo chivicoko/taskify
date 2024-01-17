@@ -4,10 +4,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit, faTrashCan } from '@fortawesome/free-solid-svg-icons';
 import { faCancel } from '@fortawesome/free-solid-svg-icons';
 import { faEllipsis } from '@fortawesome/free-solid-svg-icons';
-
 import styles from '../styles/style.module.css';
 import { useGlobContext } from '../context/context';
-// import { useGlobContext } from '../context/AppProvider';
+
 const Items = () => {
     const [selectedCategory, setSelectedCategory] = useState(null);
     const inputRef = useRef(null);
@@ -32,7 +31,6 @@ const Items = () => {
       isDropdownOpen,
       setIsDropdownOpen,
       handleCheckboxChange
-    // } = useGlobContext();
     } = useGlobContext();
   
     useEffect(() => {
