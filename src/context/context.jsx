@@ -8,13 +8,13 @@ const AppContext = React.createContext();
 const AppProvider = ({children}) => {
     const [openIndex, setOpenIndex] = useState(null);
     const [task, setTask] = useState("");
-    const [taskList, setTaskList] = useState(JSON.parse(localStorage.getItem('lstaskList')) || []);
+    const [taskList, setTaskList] = useState(JSON.parse(localStorage.getItem('taskList')) || []);
     const [editIndex, setEditIndex] = useState(null);
     const [editName, setEditName] = useState('');
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
     useEffect(() => {
-        localStorage.setItem('lstaskList', JSON.stringify(taskList));
+        localStorage.setItem('taskList', JSON.stringify(taskList));
     }, [taskList]);
 
     const handleChange = e => {
@@ -57,6 +57,7 @@ const AppProvider = ({children}) => {
     
         setTaskList(updatedTaskList);
         setEditIndex(null);
+        setEditName('');
     };
 
     const handleKeyDown = (event) => {
@@ -65,11 +66,10 @@ const AppProvider = ({children}) => {
         }
     };
 
-    const handleDone = index => {
-        const updatedItems = [...taskList];
-        updatedItems.splice(index, 1);
+    const handleDone = (index) => {
+        const updatedItems = taskList.filter((_, i) => i !== index);
         setTaskList(updatedItems);
-    }
+    };
 
     const handleOpen = (index) => {
         setOpenIndex((prevIndex) => (prevIndex === index && isDropdownOpen ? null : index));

@@ -7,6 +7,7 @@ import { faEllipsis } from '@fortawesome/free-solid-svg-icons';
 
 import styles from '../styles/style.module.css';
 import { useGlobContext } from '../context/context';
+// import { useGlobContext } from '../context/AppProvider';
 const Items = () => {
     const [selectedCategory, setSelectedCategory] = useState(null);
     const inputRef = useRef(null);
@@ -31,6 +32,7 @@ const Items = () => {
       isDropdownOpen,
       setIsDropdownOpen,
       handleCheckboxChange
+    // } = useGlobContext();
     } = useGlobContext();
   
     useEffect(() => {
@@ -88,7 +90,7 @@ const Items = () => {
           <button className={styles.categoryBtn} onClick={() => handleCategoryFilter('Personal')}>Personal</button>
         </div>
       }
-      {filteredTasks.slice().reverse().map((taskItem, index) => (
+      {filteredTasks.map((taskItem, index) => (
         <div
           key={taskItem.id}
           className={`${styles.taskItemContainer} ${taskItem.canceled ? styles.canceled : ''}`}
