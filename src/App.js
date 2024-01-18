@@ -1,7 +1,7 @@
 
-import Form from "./components/Form";
 import Header from "./components/Header";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
 
 function App() {
   return (
@@ -9,7 +9,7 @@ function App() {
         <Router>
           <Header />
           <Routes>
-            <Route path="/taskify" element={<Form/>} />
+            <Route path="/taskify" element={<Home/>} />
           </Routes>
         </Router>
       </div>
