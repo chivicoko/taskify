@@ -126,7 +126,7 @@ body::before {
     border: none;
     transition: all .5s linear;
 }
-.btnDone:hover, .time .eventBtn:hover, .taskbutton:hover {
+.btnDone:hover, .taskbutton:hover {
     background: linear-gradient(90deg, #00A 0%, #F80 100%);
     cursor: pointer;
 }
@@ -135,10 +135,24 @@ body::before {
 .dropdown {
     position: relative;
 }
+.dropdown .dropdownBtn, .btns .dropdownBtn {
+    background: linear-gradient(90deg, #F80 0%, #00A 100%);
+    padding: 10px 25px;
+    margin-right: 2em;
+    border-radius: 50px;
+    cursor: pointer;
+    color: #fff;
+    border: none;
+    transition: all .5s linear;
+}
+.dropdown .dropdownBtn:hover, .taskbutton:hover {
+    background: linear-gradient(90deg, #00A 0%, #F80 100%);
+    cursor: pointer;
+}
 .menu {
     position: absolute;
-    top: 23px;
-    left: -25px;
+    top: -13px;
+    left: -27px;
     list-style-type: none;
     padding: 0;
     border: 2px solid #F80;
@@ -154,11 +168,11 @@ body::before {
 .menu > li:hover {
     background-color: #b9b2a5;
 }
-.menu #first_item {
+.menu :first-child {
     border-top-right-radius: 8.3px;
     border-top-left-radius: 8.3px;
 }
-.menu #last_item {
+.menu :last-child {
     border-bottom-right-radius: 8.3px;
     border-bottom-left-radius: 8.3px;
 }
@@ -199,20 +213,6 @@ body::before {
     padding: .5rem 1.5rem;
     font-size: large;
     width: 60%;
-}
-.editBtn {
-    background: linear-gradient(90deg, #F80 0%, #00A 100%);
-    padding: 10px 25px;
-    margin-right: 2em;
-    border-radius: 50px;
-    cursor: pointer;
-    color: #fff;
-    border: none;
-    transition: all .5s linear;
-}
-.editBtn:hover {
-    background: linear-gradient(90deg, #00A 0%, #F80 100%);
-    cursor: pointer;
 }
 
 /* ---- */
@@ -316,7 +316,7 @@ form label select {
         padding: .5rem;
         font-size: small;
     }
-    .editBtn {
+    .btns .dropdownBtn {
         padding: 5px;
         margin-right: .5em;
         border-radius: 40px;
