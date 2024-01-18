@@ -8,7 +8,7 @@ Basically, this app, named 'Taskify App', gives the user the opportunity to be a
 
 ## Brief Notes
 
-This app was styled within a css module. Amongst the styling patterns I could have used like styled-components, bootstrap, tailwind css, and others,  I decided to use css module because of things like - no collision of element class or id names accross the app (no conflicts of styles, modularization, helping in making depencies explicit, etc. Overall I saw no reason not to use it.
+This app was styled within a css module. Amongst the styling patterns I could have used like styled-components, bootstrap, tailwind css, and others,  I decided to use css module because of things like - no collision of element class or id names accross the app (no conflicts of styles, modularization, helping in making depencies explicit, optimizing build time, etc. Overall I saw no reason not to use css module. It's not a big app so I used one central module.
 
 
 ## Important Scripts
