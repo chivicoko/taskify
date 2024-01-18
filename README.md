@@ -4,14 +4,14 @@ This project can be viewed at [Taskify](https://chivicoko.github.io/taskify/).
 
 ## How it works
 
-Basically, this app, named 'Taskify App', gives the user the opportunity to be able to input his days' task/activities where he can always refer to it. This acts as a tracking app for one's daily tasks, as one can add, update, or delete a task. One can also mark a task as completed and the task will simultaneously be visibly cancelled; it also be undone. These tasks can be grouped in the app as I have given them categories through which they can be easily filtered.
+Basically, this app, named 'Taskify App', gives the user the opportunity to be able to input his days' tasks / activities where he can always refer to it. This acts as a tracking app for one's daily tasks, as one can add, update, or delete a task. One can also mark a task as completed and the task will simultaneously be visibly cancelled; it can also be undone. These tasks can be grouped in the app as I have given them categories through which they can be easily filtered with ease.
 
 ## Brief Notes
 
-This app was styled within a css module. I could have used other styling libraries like style-components, bootstrap, tailwind. But, I decided to use the css module, so as to have everything in one file.There also a few styles written inline.
+This app was styled within a css module. Amongst the styling patterns I could have used like styled-components, bootstrap, tailwind css, and others,  I decided to use css module because of things like - no collision of element class or id names accross the app (no conflicts of styles, modularization, helping in making depencies explicit, etc. Overall I saw no reason not to use it.
 
 
-## Available Scripts
+## Important Scripts
 
 In the project directory, you can run:
 
