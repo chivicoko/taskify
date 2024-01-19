@@ -33,7 +33,7 @@ const Items = () => {
     handleKeyDown,
     isDropdownOpen,
     setIsDropdownOpen,
-    handleCheckboxChange
+    handleCheckboxChange,
   } = useGlobContext();
 
   useEffect(() => {
@@ -104,8 +104,8 @@ const Items = () => {
                   onKeyDown={handleKeyDown}
                 />
                 <div className={styles.btns}>
-                  <Button onClick={handleSaveEdit} icon={<FontAwesomeIcon icon="fas fa-save" />} label="Save" />
-                  <Button onClick={() => setEditIndex(null)} icon={<FontAwesomeIcon icon="fas fa-save" />}label="Cancel" />
+                  <Button onClick={handleSaveEdit} icon={<FontAwesomeIcon icon="fas fa-save" />} label="Save" className={styles.dropdownBtn} />
+                  <Button onClick={() => setEditIndex(null)} icon={<FontAwesomeIcon icon="fas fa-save" />}label="Cancel" className={styles.dropdownBtn} />
                 </div>
               </div>
             ) : (
@@ -135,6 +135,7 @@ const Items = () => {
                     }}
                     icon={faEllipsis}
                     label=''
+                    className={styles.dropdownBtn}
                   />
                   {openIndex === index && isDropdownOpen && (
                     <Dropdown>

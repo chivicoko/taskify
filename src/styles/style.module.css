@@ -2,7 +2,6 @@
 body {
     margin: 0;
     padding: 0;
-    padding-bottom: 2rem;
     box-sizing: border-box;
     font-family: sans-serif;
     height: 100%;
@@ -246,7 +245,7 @@ body::before {
 .categoryBtn:hover {
     border: 2px solid #F80;
 }
-.categoryBtn:active {
+.categoryBtn:focus {
     border: 2px solid #F80;
 }
 form label {
@@ -269,6 +268,18 @@ form label select {
 .uncategorizedLabel {
     color: red;
     font-size: small;
+}
+
+.footer {
+    background: #1e1e1e;
+    color: #fff;
+    padding-inline: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.footer h5 span {
+    color: #F80;
 }
 
 @media screen and (max-width: 1189px) {

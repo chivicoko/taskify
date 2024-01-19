@@ -5,6 +5,8 @@ import Items from '../components/Items';
 import { useGlobContext } from '../context/context';
 import TaskLabel from '../components/TaskLabel';
 import Input from '../components/Input';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSave } from '@fortawesome/free-solid-svg-icons';
 
 const Home = () => {
   const { handleChange, handleSubmit, task } = useGlobContext();
@@ -35,7 +37,9 @@ const Home = () => {
             value={newTaskCategory}
             categories={categories}
           />
-          <button className={styles.taskbutton} type="submit"> Add </button>
+
+          <button className={styles.taskbutton} type="submit"> <FontAwesomeIcon icon={faSave} /> Add </button>
+          
         </form>
         <Items />
       </div>
