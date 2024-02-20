@@ -1,4 +1,4 @@
-# Taskify App - Technology for Organizationa Purposes
+# Taskify App - Technology for Organizational Purposes
 
 This project can be viewed at [Taskify](https://chivicoko.github.io/taskify/).
 
